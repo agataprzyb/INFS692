@@ -1,0 +1,937 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={INFS 692 - Final Project Model 3},
+  pdfauthor={Agata},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{INFS 692 - Final Project Model 3}
+\author{Agata}
+\date{2022-12-14}
+
+\begin{document}
+\maketitle
+
+\hypertarget{libraries}{%
+\subsubsection{Libraries}\label{libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(latexpdf)}
+\FunctionTok{library}\NormalTok{(rmarkdown)}
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(plyr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:plyr':
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(ggpubr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'ggpubr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:plyr':
+## 
+##     mutate
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'gridExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(COUNT)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: msme
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MASS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MASS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: sandwich
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(rstatix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'rstatix'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MASS':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:plyr':
+## 
+##     desc, mutate
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(modeldata)}
+\FunctionTok{library}\NormalTok{(rsample)    }\CommentTok{\# for creating validation splits}
+\FunctionTok{library}\NormalTok{(recipes)    }\CommentTok{\# for feature engineering}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'recipes'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     step
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(purrr)      }\CommentTok{\#for mapping}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'purrr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:caret':
+## 
+##     lift
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:plyr':
+## 
+##     compact
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)  }\CommentTok{\# for filtering }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.8     v stringr 1.5.0
+## v tidyr   1.2.1     v forcats 0.5.2
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::arrange()     masks plyr::arrange()
+## x gridExtra::combine() masks dplyr::combine()
+## x purrr::compact()     masks plyr::compact()
+## x dplyr::count()       masks plyr::count()
+## x dplyr::failwith()    masks plyr::failwith()
+## x rstatix::filter()    masks dplyr::filter(), stats::filter()
+## x stringr::fixed()     masks recipes::fixed()
+## x dplyr::id()          masks plyr::id()
+## x dplyr::lag()         masks stats::lag()
+## x purrr::lift()        masks caret::lift()
+## x rstatix::mutate()    masks ggpubr::mutate(), dplyr::mutate(), plyr::mutate()
+## x dplyr::rename()      masks plyr::rename()
+## x rstatix::select()    masks MASS::select(), dplyr::select()
+## x dplyr::summarise()   masks plyr::summarise()
+## x dplyr::summarize()   masks plyr::summarize()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ROCR)      }\CommentTok{\# ROC Curves}
+\FunctionTok{library}\NormalTok{(pROC)      }\CommentTok{\# ROC Curves}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Type 'citation("pROC")' for a citation.
+## 
+## Attaching package: 'pROC'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     cov, smooth, var
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rpart)      }\CommentTok{\# decision tree application}
+\FunctionTok{library}\NormalTok{(rpart.plot)  }\CommentTok{\# plotting decision trees}
+\FunctionTok{library}\NormalTok{(vip)         }\CommentTok{\# for feature importance}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'vip'
+## 
+## The following object is masked from 'package:utils':
+## 
+##     vi
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pdp) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'pdp'
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     partial
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)     }\CommentTok{\# for string functionality}
+
+\CommentTok{\# Modeling packages}
+\FunctionTok{library}\NormalTok{(tidyverse)  }\CommentTok{\# data manipulation}
+\FunctionTok{library}\NormalTok{(cluster)     }\CommentTok{\# for general clustering algorithms}
+\FunctionTok{library}\NormalTok{(factoextra)  }\CommentTok{\# for visualizing cluster results}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Modeling packages}
+\FunctionTok{library}\NormalTok{(mclust)   }\CommentTok{\# for fitting clustering algorithms}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Package 'mclust' version 6.0.0
+## Type 'citation("mclust")' for citing this R package in publications.
+## 
+## Attaching package: 'mclust'
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     map
+\end{verbatim}
+
+\hypertarget{importing-data}{%
+\subsubsection{Importing Data}\label{importing-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"radiomics\_completedata.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{preprocessing-data}{%
+\subsubsection{Preprocessing data}\label{preprocessing-data}}
+
+Since we're not taking into consideration categorical variables or
+Failure.binary, I decided to split the data so that it only takes into
+consideration variables with Entropy. I thought this split had the most
+interesting results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Check for null and missing values}
+
+\FunctionTok{which}\NormalTok{(}\FunctionTok{is.null}\NormalTok{(data1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(data1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Data split}
+
+
+\NormalTok{sub2 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(data1, }\AttributeTok{select=} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Institution, Failure.binary, Failure))}
+
+
+\NormalTok{sub2 }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(sub2, }\FunctionTok{contains}\NormalTok{(}\StringTok{"Entropy"}\NormalTok{))}
+
+
+
+
+\CommentTok{\#Check for normality}
+
+\FunctionTok{hist}\NormalTok{(sub2}\SpecialCharTok{$}\NormalTok{Entropy\_cooc.W.ADC)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# or}
+
+
+\NormalTok{sub1shapiro }\OtherTok{\textless{}{-}} \FunctionTok{shapiro.test}\NormalTok{(sub2}\SpecialCharTok{$}\NormalTok{Entropy\_cooc.W.ADC)}
+\NormalTok{sub1shapiro}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  sub2$Entropy_cooc.W.ADC
+## W = 0.98903, p-value = 0.135
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#based on the histogram, the data is not normalized.This is also enhanced by the shapiro test}
+\CommentTok{\#where the p{-}value is \textless{} 0.05, which means that the data is not normalized.}
+
+
+\CommentTok{\#Normalize Data}
+
+\NormalTok{scale\_data }\OtherTok{\textless{}{-}}  \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{scale}\NormalTok{(sub2, }\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{))}
+
+\FunctionTok{summary}\NormalTok{(scale\_data}\SpecialCharTok{$}\NormalTok{Entropy\_cooc.W.ADC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -2.6407173 -0.6921994  0.0001827  0.0000000  0.6719746  2.1464095
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(scale\_data}\SpecialCharTok{$}\NormalTok{Entropy\_cooc.W.ADC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Now the data has a mean of 0 and a standard deviation of 1, meaning the data is normalized. }
+
+
+\CommentTok{\#check correlation for full data set except categorical variables}
+
+\NormalTok{cor1 }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(scale\_data)}
+\CommentTok{\#cor1 commented out for pdf page saving purposes}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{k-means}{%
+\subsubsection{K-Means}\label{k-means}}
+
+Based on the optimal number of clusters graph below, the optimal number
+is k=2, which is why the k-means clustering is set to 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ scale\_data}
+
+
+\CommentTok{\#Determining Optimal Number of Clusters}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\#function to compute total within{-}cluster sum of square }
+\NormalTok{wss }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(k) \{}
+  \FunctionTok{kmeans}\NormalTok{(df, k, }\AttributeTok{nstart =} \DecValTok{10}\NormalTok{ )}\SpecialCharTok{$}\NormalTok{tot.withinss}
+\NormalTok{\}}
+
+\CommentTok{\# Compute and plot wss for k = 1 to k = 15}
+\NormalTok{k.values }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\DecValTok{15}
+
+\CommentTok{\# extract wss for 2{-}15 clusters}
+\NormalTok{wss\_values }\OtherTok{\textless{}{-}} \FunctionTok{map\_dbl}\NormalTok{(k.values, wss)}
+
+\CommentTok{\#or use this}
+\FunctionTok{fviz\_nbclust}\NormalTok{(df, kmeans, }\AttributeTok{method =} \StringTok{"silhouette"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute k{-}means clustering with k = 2}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{final }\OtherTok{\textless{}{-}} \FunctionTok{kmeans}\NormalTok{(df, }\DecValTok{2}\NormalTok{, }\AttributeTok{nstart =} \DecValTok{25}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(final)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## K-means clustering with 2 clusters of sizes 50, 147
+## 
+## Cluster means:
+##   Entropy_cooc.W.ADC Entropy_hist.PET Entropy_cooc.L.PET Entropy_align.L.PET
+## 1         0.04845450        1.5003007          1.6813985           1.6880661
+## 2        -0.01648112       -0.5103064         -0.5719043          -0.5741722
+##   Entropy_area.L.PET Entropy_cooc.H.PET Entropy_align.H.PET Entropy_area.H.PET
+## 1          1.6893793          1.4404122            1.550297          1.6279234
+## 2         -0.5746188         -0.4899361           -0.527312         -0.5537154
+##   Entropy_cooc.W.PET Entropy_align.W.PET Entropy_area.W.PET Entropy_hist.ADC
+## 1          1.4784780           1.5543465          1.6167770        1.6284344
+## 2         -0.5028837          -0.5286893         -0.5499242       -0.5538893
+##   Entropy_cooc.L.ADC Entropy_align.L.ADC Entropy_area.L.ADC Entropy_cooc.H.ADC
+## 1          1.6827114           1.6982212          1.7010816          1.7011475
+## 2         -0.5723508          -0.5776262         -0.5785992         -0.5786216
+##   Entropy_align.H.ADC Entropy_area.H.ADC Entropy_align.W.ADC Entropy_area.W.ADC
+## 1           1.7093530          1.7066118            1.661714           1.672228
+## 2          -0.5814126         -0.5804802           -0.565209          -0.568785
+## 
+## Clustering vector:
+##   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+##  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  40 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+##  41  42  43  44  45  46  47  48  49  50  51  52  53  54  55  56  57  58  59  60 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+##  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+##  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+## 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+## 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 
+##   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2   2 
+## 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 
+##   2   2   2   2   2   2   2   1   1   1   1   1   1   1   1   1   1   1   1   1 
+## 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 
+##   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+## 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 
+##   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1   1 
+## 
+## Within cluster sum of squares by cluster:
+## [1] 224.1776 300.2509
+##  (between_SS / total_SS =  86.6 %)
+## 
+## Available components:
+## 
+## [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+## [6] "betweenss"    "size"         "iter"         "ifault"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#final data}
+\FunctionTok{fviz\_cluster}\NormalTok{(final, }\AttributeTok{data =}\NormalTok{ df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-4-2.pdf}
+\#\#\# Hierarchical
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Dissimilarity matrix}
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{dist}\NormalTok{(df, }\AttributeTok{method =} \StringTok{"euclidean"}\NormalTok{)}
+
+\CommentTok{\# Hierarchical clustering using Complete Linkage}
+\NormalTok{hc1 }\OtherTok{\textless{}{-}} \FunctionTok{hclust}\NormalTok{(d, }\AttributeTok{method =} \StringTok{"complete"}\NormalTok{ )}
+
+\CommentTok{\# For reproducibility}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Compute maximum or complete linkage clustering with agnes}
+\NormalTok{hc2 }\OtherTok{\textless{}{-}} \FunctionTok{agnes}\NormalTok{(df, }\AttributeTok{method =} \StringTok{"complete"}\NormalTok{)}
+
+\CommentTok{\# Agglomerative coefficient}
+\NormalTok{hc2}\SpecialCharTok{$}\NormalTok{ac}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9471993
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# methods to assess}
+\NormalTok{m }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{( }\StringTok{"average"}\NormalTok{, }\StringTok{"single"}\NormalTok{, }\StringTok{"complete"}\NormalTok{, }\StringTok{"ward"}\NormalTok{)}
+\FunctionTok{names}\NormalTok{(m) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{( }\StringTok{"average"}\NormalTok{, }\StringTok{"single"}\NormalTok{, }\StringTok{"complete"}\NormalTok{, }\StringTok{"ward"}\NormalTok{)}
+
+\CommentTok{\# function to compute coefficient}
+\NormalTok{ac }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \FunctionTok{agnes}\NormalTok{(df, }\AttributeTok{method =}\NormalTok{ x)}\SpecialCharTok{$}\NormalTok{ac}
+\NormalTok{\}}
+
+\CommentTok{\# get agglomerative coefficient for each linkage method}
+\NormalTok{purrr}\SpecialCharTok{::}\FunctionTok{map\_dbl}\NormalTok{(m, ac)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   average    single  complete      ward 
+## 0.9251753 0.9063889 0.9471993 0.9908626
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# compute divisive hierarchical clustering}
+\NormalTok{hc4 }\OtherTok{\textless{}{-}} \FunctionTok{diana}\NormalTok{(df)}
+
+\CommentTok{\# Divise coefficient; amount of clustering structure found}
+\NormalTok{hc4}\SpecialCharTok{$}\NormalTok{dc}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9420499
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# plots to compare}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_nbclust}\NormalTok{(df, }\AttributeTok{FUN =}\NormalTok{ hcut, }\AttributeTok{method =} \StringTok{"wss"}\NormalTok{,}
+                   \AttributeTok{k.max =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"(A) Elbow method"}\NormalTok{)}
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_nbclust}\NormalTok{(df, }\AttributeTok{FUN =}\NormalTok{ hcut, }\AttributeTok{method =} \StringTok{"silhouette"}\NormalTok{,}
+                   \AttributeTok{k.max =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"(B) Silhouette method"}\NormalTok{)}
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_nbclust}\NormalTok{(df, }\AttributeTok{FUN =}\NormalTok{ hcut, }\AttributeTok{method =} \StringTok{"gap\_stat"}\NormalTok{,}
+                   \AttributeTok{k.max =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"(A) Gap Statistics method"}\NormalTok{)}
+
+\NormalTok{gridExtra}\SpecialCharTok{::}\FunctionTok{grid.arrange}\NormalTok{(p1, p2, p3, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ward\textquotesingle{}s method}
+
+\NormalTok{hc5 }\OtherTok{\textless{}{-}} \FunctionTok{hclust}\NormalTok{(d, }\AttributeTok{method =} \StringTok{"ward.D2"}\NormalTok{ )}
+
+\NormalTok{dend\_plot }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_dend}\NormalTok{(hc5)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
+## of ggplot2 3.3.4.
+## i The deprecated feature was likely used in the factoextra package.
+##   Please report the issue at <]8;;https://github.com/kassambara/factoextra/issueshttps://github.com/kassambara/factoextra/issues]8;;>.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dend\_data }\OtherTok{\textless{}{-}} \FunctionTok{attr}\NormalTok{(dend\_plot, }\StringTok{"dendrogram"}\NormalTok{)}
+\NormalTok{dend\_cuts }\OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(dend\_data, }\AttributeTok{h =} \DecValTok{8}\NormalTok{)}
+\FunctionTok{fviz\_dend}\NormalTok{(dend\_cuts}\SpecialCharTok{$}\NormalTok{lower[[}\DecValTok{2}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-5-2.pdf}
+As shown above, both silhouette and gap-statistics show the same optimal
+k number of clusters. Which is why we remain at k = 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cut tree into 3 groups}
+\NormalTok{sub\_grp }\OtherTok{\textless{}{-}} \FunctionTok{cutree}\NormalTok{(hc5, }\AttributeTok{k =} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Number of members in each cluster}
+\FunctionTok{table}\NormalTok{(sub\_grp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sub_grp
+##   1   2 
+## 147  50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot full dendogram}
+\FunctionTok{fviz\_dend}\NormalTok{(}
+\NormalTok{  hc5,}
+  \AttributeTok{k =} \DecValTok{2}\NormalTok{,}
+  \AttributeTok{horiz =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{rect =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{rect\_fill =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{rect\_border =} \StringTok{"jco"}\NormalTok{,}
+  \AttributeTok{k\_colors =} \StringTok{"jco"}\NormalTok{,}
+  \AttributeTok{cex =} \FloatTok{0.1}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dend\_plot }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_dend}\NormalTok{(hc5)                }\CommentTok{\# create full dendogram}
+\NormalTok{dend\_data }\OtherTok{\textless{}{-}} \FunctionTok{attr}\NormalTok{(dend\_plot, }\StringTok{"dendrogram"}\NormalTok{) }\CommentTok{\# extract plot info}
+\NormalTok{dend\_cuts }\OtherTok{\textless{}{-}} \FunctionTok{cut}\NormalTok{(dend\_data, }\AttributeTok{h =} \FloatTok{70.5}\NormalTok{)      }\CommentTok{\# cut the dendogram at }
+\CommentTok{\# designated height}
+\CommentTok{\# Create sub dendrogram plots}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_dend}\NormalTok{(dend\_cuts}\SpecialCharTok{$}\NormalTok{lower[[}\DecValTok{1}\NormalTok{]])}
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{fviz\_dend}\NormalTok{(dend\_cuts}\SpecialCharTok{$}\NormalTok{lower[[}\DecValTok{1}\NormalTok{]], }\AttributeTok{type =} \StringTok{\textquotesingle{}circular\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Side by side plots}
+\NormalTok{gridExtra}\SpecialCharTok{::}\FunctionTok{grid.arrange}\NormalTok{(p1, p2, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-6-2.pdf}
+Based on this clustering algorithm, the final output of the dendrogram
+doesn't look as nice without zooming in. However, it does show more
+details than K-Means.
+
+\hypertarget{model-based}{%
+\subsubsection{Model-Based}\label{model-based}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_basket }\OtherTok{\textless{}{-}}\NormalTok{ scale\_data}
+
+\CommentTok{\# Apply GMM model with 3 components}
+\NormalTok{data1\_mc }\OtherTok{\textless{}{-}} \FunctionTok{Mclust}\NormalTok{(scale\_data, }\AttributeTok{G =} \DecValTok{3}\NormalTok{)}
+
+\CommentTok{\# Plot results}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+
+
+\FunctionTok{plot}\NormalTok{(data1\_mc, }\AttributeTok{what =} \StringTok{"density"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(data1\_mc, }\AttributeTok{what =} \StringTok{"uncertainty"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Observations with high uncertainty}
+\FunctionTok{sort}\NormalTok{(data1\_mc}\SpecialCharTok{$}\NormalTok{uncertainty, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        33        38        26        70        72         3 
+## 0.3812836 0.3201442 0.2158333 0.1526643 0.1145401 0.1145004
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data1\_optimal\_mc }\OtherTok{\textless{}{-}} \FunctionTok{Mclust}\NormalTok{(scale\_data)}
+
+
+\NormalTok{legend\_args }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{x =} \StringTok{"bottomright"}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{5}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(data1\_optimal\_mc, }\AttributeTok{what =} \StringTok{\textquotesingle{}BIC\textquotesingle{}}\NormalTok{, }\AttributeTok{legendArgs =}\NormalTok{ legend\_args)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(data1\_optimal\_mc, }\AttributeTok{what =} \StringTok{\textquotesingle{}classification\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(data1\_optimal\_mc, }\AttributeTok{what =} \StringTok{\textquotesingle{}uncertainty\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_basket\_mc }\OtherTok{\textless{}{-}} \FunctionTok{Mclust}\NormalTok{(my\_basket, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{20}\NormalTok{)}
+
+
+\FunctionTok{plot}\NormalTok{(my\_basket\_mc, }\AttributeTok{what =} \StringTok{\textquotesingle{}BIC\textquotesingle{}}\NormalTok{, }
+     \AttributeTok{legendArgs =} \FunctionTok{list}\NormalTok{(}\AttributeTok{x =} \StringTok{"bottomright"}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{probabilities }\OtherTok{\textless{}{-}}\NormalTok{ my\_basket\_mc}\SpecialCharTok{$}\NormalTok{z }
+\FunctionTok{colnames}\NormalTok{(probabilities) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)}
+
+\NormalTok{probabilities }\OtherTok{\textless{}{-}}\NormalTok{ probabilities }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{id =} \FunctionTok{row\_number}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  tidyr}\SpecialCharTok{::}\FunctionTok{gather}\NormalTok{(cluster, probability, }\SpecialCharTok{{-}}\NormalTok{id)}
+
+\FunctionTok{ggplot}\NormalTok{(probabilities, }\FunctionTok{aes}\NormalTok{(probability)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ cluster, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{uncertainty }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{id =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(my\_basket),}
+  \AttributeTok{cluster =}\NormalTok{ my\_basket\_mc}\SpecialCharTok{$}\NormalTok{classification,}
+  \AttributeTok{uncertainty =}\NormalTok{ my\_basket\_mc}\SpecialCharTok{$}\NormalTok{uncertainty}
+\NormalTok{)}
+
+\NormalTok{uncertainty }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(cluster) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(uncertainty }\SpecialCharTok{\textgreater{}} \FloatTok{0.25}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(uncertainty, }\FunctionTok{reorder}\NormalTok{(id, uncertainty))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ cluster, }\AttributeTok{scales =} \StringTok{\textquotesingle{}free\_y\textquotesingle{}}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cluster2 }\OtherTok{\textless{}{-}}\NormalTok{ my\_basket }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{scale}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cluster =}\NormalTok{ my\_basket\_mc}\SpecialCharTok{$}\NormalTok{classification) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(cluster }\SpecialCharTok{==} \DecValTok{2}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{cluster)}
+
+\NormalTok{cluster2 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  tidyr}\SpecialCharTok{::}\FunctionTok{gather}\NormalTok{(product, std\_count) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(product) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{avg =} \FunctionTok{mean}\NormalTok{(std\_count)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(avg, }\FunctionTok{reorder}\NormalTok{(product, avg))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Average Entropy"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-3_files/figure-latex/unnamed-chunk-7-9.pdf}
+\#\#\# Conclusion
+
+K-Means and Hierarchical models did not change their k cluster
+numbering, but model-based did with k = 3. Each model has an interesting
+way of displaying clusters, and the most interesting one of the three is
+the Hierarchical one with the dendrogram.
+
+\end{document}

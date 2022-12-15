@@ -1,0 +1,478 @@
+---
+title: "INFS 692 - Final Project Model 1"
+author: "Agata"
+date: "2022-12-14"
+output: pdf_document
+---
+
+## Helper Packages
+
+These are all the packages necessary for running the Model 1 code. 
+
+
+```{r}
+library(readr)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+library(gridExtra)
+library(COUNT)
+library(caret)
+library(rstatix)
+library(modeldata)
+library(rsample)    # for creating validation splits
+library(recipes)    # for feature engineering
+library(purrr)      #for mapping
+library(tidyverse)  # for filtering 
+library(ROCR)      # ROC Curves
+library(pROC)      # ROC Curves
+library(rpart)      # decision tree application
+library(rpart.plot)  # plotting decision trees
+library(vip)         # for feature importance
+library(pdp) 
+
+
+```
+
+## Loading Data
+
+Before pre=processing the data, we need to load it into a data1 variable for easier 
+manipulation. The str() function helps identify which variables in the dataset
+are categorical, factors, etc. 
+
+```{r}
+data1 <- read.csv("radiomics_completedata.csv", sep = ",")
+
+```
+
+## Preprocessing Data
+
+First, we must check the data for null and missing values. 
+
+```{r}
+#Check for null and missing values
+
+which(is.null(data1))
+
+which(is.na(data1))
+
+```
+
+In this case, we have neither missing nor null values. We can proceed to splitting 
+the data. 
+
+We want to split the data so that it doesn't include any categorical variables, 
+or the Failure column. 
+
+```{r}
+#Data split
+
+sub1 <- subset(data1, select= -c(Institution, Failure))
+
+```
+
+Next, we must check if the data has a normal distribution. 
+We can do this using two methods: using a histogram and determining visually
+if it has a bell curve (meaning data is normalized), or using the Shapiro test
+in which if the p-value is < than 0.5, that means that the data is not normally
+distributed. 
+
+
+```{r}
+#Check for normality
+
+hist(sub1$GLNU_align.H.PET)
+
+```
+
+```{r}
+
+
+sub1shapiro <- shapiro.test(sub1$GLNU_align.H.PET)
+sub1shapiro
+
+```
+
+In this case, the histogram doesn't show us a bell curve, and the p-value
+from the Shapiro test is < 0.5, meaning data is not distributed normally. 
+
+We must perform data normalization using the scale() function. Once done, 
+to check if data is normalized, we can use the summary() function to see if the 
+mean is = 0 and use the sd() function to see if the standard deviation is = 1.
+
+
+```{r}
+
+
+#Normalize Data
+
+scale_data <-  as.data.frame(scale(sub1, center = TRUE, scale = TRUE))
+
+summary(scale_data$GLNU_align.H.PET)
+sd(scale_data$GLNU_align.H.PET)
+
+```
+
+Now the data has a mean of 0 and a standard deviation of 1, meaning the data is normalized.
+
+We then check correlation of the full dataset without the categorical variables:
+
+```{r}
+
+cor1 <- cor(select(scale_data, -c(Failure.binary)))
+#cor1 this has been commented out or else there would be 700 pages in the pdf
+
+```
+
+### Dataset Training and Testing Split
+
+With preprocessing done, we can split the training and testing dataset. For this,
+we begin by factoring the Failure.binary column, and transforming the levels
+so that they represent Failure and Success. This is important for KNN and Decision
+Trees.
+
+For memory purposes and faster processing, we split the dataframe to take only a 
+"sample" of the full dataset, or just the 50 first columns. The training is split
+at 80%, using Failure.binary as the output.
+
+```{r}
+
+scale_data$Failure.binary <- factor(data1$Failure.binary)
+
+
+#data1 <- select(scale_data, -c("Institution", "Failure"))
+
+data1 <- select(scale_data, 1:50)
+
+levels(data1$Failure.binary) <- c("Failure", "Success")
+
+
+df <- data1
+
+str(df)
+
+# Create training (80%) and test (20%) sets for the 
+set.seed(123)  # for reproducibility
+churn_split <- initial_split(df, prop = 0.8, strata = "Failure.binary")
+churn_train <- training(churn_split)
+churn_test  <- testing(churn_split)
+
+```
+
+### Model 1: Linear Regression
+
+The first model we will look at is Linear Regression.
+
+First, we train 3 different models. 
+
+```{r}
+
+#Model training
+ set.seed(123)
+ cv_model1 <- train(
+   Failure.binary ~ H_suv.PET, 
+   data = churn_train, 
+   method = "glm",
+   family = "binomial",
+   trControl = trainControl(method = "cv", number = 5)
+   )
+
+set.seed(123)
+cv_model2 <- train(
+   Failure.binary ~ Entropy_cooc.W.ADC + GLNU_align.H.PET,
+   data = churn_train,
+   method = "glm",
+   family = "binomial",
+   trControl = trainControl(method = "cv", number = 5)
+
+ )
+
+ set.seed(123)
+ cv_model3 <- train(
+   Failure.binary ~ .,  #overall datasets
+   data = churn_train,
+   method = "glm",
+   family = "binomial",
+   trControl = trainControl(method = "cv", number = 5)
+ )
+ 
+```
+
+Then we extract the sample performance measures:
+
+```{r}
+
+# extract out of sample performance measures
+summary(
+  resamples(
+    list(
+      model1 = cv_model1,
+      model2 = cv_model2,
+      model3 = cv_model3
+    )
+  )
+)$statistics$Accuracy
+
+
+```
+As seen above, model 2 has the best results. As a whole, model 1 is the weakest
+(Final.binary on its own).
+
+Next, we create the prediction classes for each model and their confusion matrices.
+
+Because we changed the levels for Faliure.binary to "Failure" and "Success"
+we need to change the reference parameters to that.
+
+
+```{r}
+
+
+# predict class
+pred_class_1 <- predict(cv_model1, churn_train)
+
+
+#balanced accuracy is most important
+
+# create confusion matrix
+confusionMatrix(
+  data = relevel(pred_class_1, ref = "Success"), 
+  reference = relevel(churn_train$Failure.binary, ref = "Success")
+)
+
+pred_class_2 <- predict(cv_model2, churn_train)
+
+# create confusion matrix
+confusionMatrix(
+  data = relevel(pred_class_2, ref = "Success"), 
+  reference = relevel(churn_train$Failure.binary, ref = "Success")
+)
+
+pred_class_3 <- predict(cv_model3, churn_train)
+
+# create confusion matrix
+confusionMatrix(
+  data = relevel(pred_class_3, ref = "Success"), 
+  reference = relevel(churn_train$Failure.binary, ref = "Success")
+)
+
+
+# Compute predicted probabilities on training data
+m1_prob <- predict(cv_model1, churn_train, type = "prob")$Success
+m2_prob <- predict(cv_model2, churn_train, type = "prob")$Success
+m3_prob <- predict(cv_model3, churn_train, type = "prob")$Success
+
+
+
+# Compute AUC metrics for cv_model1,2 and 3 
+perf1 <- prediction(m1_prob, churn_train$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+perf2 <- prediction(m2_prob, churn_train$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+perf3 <- prediction(m3_prob, churn_train$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+
+# Plot ROC curves for cv_model1,2 and 3 
+plot(perf1, col = "black", lty = 2)
+plot(perf2,  add = TRUE, col = "red", lty = 2)
+plot(perf3, add = TRUE, col = "blue")
+legend(0.7, 0.3, legend = c("cv_model1", "cv_model2", "cv_model3"),
+       col = c("black","red", "blue"), lty = 3:1, cex = 0.6)
+
+# ROC plot for training data
+roc(churn_train$Failure.binary ~ m1_prob, plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+plot.roc(churn_train$Failure.binary ~ m2_prob,  percent=TRUE, col="red", 
+         lwd=2, print.auc=TRUE, add=TRUE, print.auc.y=40)
+plot.roc(churn_train$Failure.binary ~ m3_prob,  percent=TRUE, col="blue", 
+         lwd=2, print.auc=TRUE, add=TRUE, print.auc.y=30)
+title(main = "Model Performance during Training", line = 2.5)
+
+
+#Feature Interpretation
+vip(cv_model3, num_features = 20)
+
+# Compute predicted probabilities on test data
+m1_prob <- predict(cv_model1, churn_test, type = "prob")$Success
+m2_prob <- predict(cv_model2, churn_test, type = "prob")$Success
+m3_prob <- predict(cv_model3, churn_test, type = "prob")$Success
+
+# Compute AUC metrics for cv_model1,2 and 3 
+perf1 <- prediction(m1_prob, churn_test$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+perf2 <- prediction(m2_prob, churn_test$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+perf3 <- prediction(m3_prob, churn_test$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+
+# Plot ROC curves for cv_model1,2 and 3 
+plot(perf1, col = "black", print.auc=TRUE, lty = 2)
+plot(perf2,  add = TRUE, col = "red",  print.auc=TRUE, lty = 2)
+plot(perf3, add = TRUE, col = "blue", print.auc=TRUE)
+legend(0.7, 0.3, legend = c("cv_model1", "cv_model2", "cv_model3"),
+       col = c("black","red", "blue"), lty = 3:1, cex = 0.6)
+
+# ROC plot for testing data
+roc(churn_test$Failure.binary ~ m1_prob, plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+plot.roc(churn_test$Failure.binary ~ m2_prob,  percent=TRUE, col="red", 
+         lwd=2, print.auc=TRUE, add=TRUE, print.auc.y=40)
+plot.roc(churn_test$Failure.binary ~ m3_prob,  percent=TRUE, col="blue", 
+         lwd=2, print.auc=TRUE, add=TRUE, print.auc.y=30)
+title(main = "Model Performance during Testing", line = 2.5)
+
+
+legend("topright", c("Model 1", "Model 2", "Model 3"), lty=1, 
+    col = c("black", "red", "blue"), bty="n")
+
+```
+
+As seen in the ROC graph, Model 2 performs in an outstancing manner of distinguishing failures and successes, whereas model 3, in which Failure.binary as a whole performs on the entire dataset, still performs at an excellent level. Model 1, technically, shouldn't really be considered.
+
+
+### Model 2: KNN
+
+Here we are creating a second model using KNN. The grid search on my computer takes about 5-7 minutes with a sample size of 50 variables. Again, reference points for prediction is "Success".
+
+
+```{r}
+#------Blueprint-------------------------------------------#
+
+blueprint_attr <- recipe(Failure.binary ~ ., data = churn_train) %>%
+  step_nzv(all_nominal()) %>%
+  step_integer(contains("Entropy")) %>%
+  step_integer(contains("GLNU")) %>%
+  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE) %>%
+  step_center(all_numeric(), -all_outcomes()) %>%
+  step_scale(all_numeric(), -all_outcomes())
+
+#-----------Resampling Method----------------------------#
+
+cv <- trainControl(
+  method = "repeatedcv", 
+  number = 10, 
+  repeats = 5,
+  classProbs = TRUE,                 
+  summaryFunction = twoClassSummary)
+#-------Hyperparameters and Gridsearch---------------------------#
+
+hyper_grid <- expand.grid(
+  k = floor(seq(1, nrow(churn_train)/3, length.out = 20))
+)
+
+# Fit knn model and perform grid search
+knn_grid <- train(
+  blueprint_attr, 
+  data = churn_train, 
+  method = "knn", 
+  trControl = cv, 
+  tuneGrid = hyper_grid,
+  metric = "ROC"
+)
+
+ggplot(knn_grid)
+
+
+#----------Variable Importance----------------#
+
+varimpo <- varImp(knn_grid)
+varimpo
+
+pred_knngrid <- predict(knn_grid, churn_train)
+
+confusionMatrix(
+  data = relevel(pred_knngrid, ref = "Success"), 
+  reference = relevel(churn_train$Failure.binary, ref = "Success")
+)
+
+
+ggplot(varimpo)
+
+
+par(mfrow = c(1,2))
+
+
+
+# § Plot the training data performance while print the AUC values.
+
+
+knngrid_prob <- predict(knn_grid, churn_train, type = "prob")$Success
+roc(churn_train$Failure.binary ~ knngrid_prob, plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+title(main = "Model Performance during Training", line = 2.5)
+
+
+# § Use the PREDICT function to predict using the testing data.
+
+knntest <- predict(knn_grid, churn_test)
+confusionMatrix(
+  data = relevel(knntest, ref = "Success"), 
+  reference = relevel(churn_test$Failure.binary, ref = "Success")
+)
+                              
+# § Plot the testing data performance while print the AUC values.
+
+knngrid_probtest <- predict(knn_grid, churn_test, type = "prob")$Success
+roc(churn_test$Failure.binary ~ knngrid_probtest, plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+title(main = "Model Performance during Testing", line = 2.5)
+
+```
+The training data performance is just a little better than testing, but the AUC values for both aren't as good as the ones from LR.
+
+
+### Model 3: Decision Tree
+
+```{r}
+
+##modeling
+fit <- rpart(Failure.binary~., data = churn_train, method = 'class')
+
+#plotting
+rpart.plot(fit, extra = 100)
+
+#plotting
+plotcp(fit)
+
+#feature importance
+vip(fit, num_features = 20, bar = FALSE)
+
+# Compute predicted probabilities on training data
+dt1_prob <- predict(fit, churn_train, type = "prob")
+
+# ROC plot for training data
+roc(churn_train$Failure.binary ~ dt1_prob[,2], plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+
+
+test_fit <- rpart(Failure.binary~., data = churn_test, method = 'class')
+failure_predict <- predict(test_fit,churn_test)
+
+
+#    Use the RPART.PLOT and PLOTCP function to identify the trees
+rpart.plot(test_fit, extra =  100)
+plotcp(test_fit)
+
+#    Plot the testing data performance while print the AUC values
+
+
+dt2_prob <- predict(test_fit, churn_test, type = "prob")
+
+perf1 <- prediction(dt2_prob[,2], churn_test$Failure.binary) %>%
+  performance(measure = "tpr", x.measure = "fpr")
+plot(perf1, col = "black", lty = 2)
+
+roc(churn_test$Failure.binary ~ dt2_prob[,2], plot=TRUE, legacy.axes=FALSE, 
+    percent=TRUE, col="black", lwd=2, print.auc=TRUE)
+
+```
+
+The Decision Tree ROC curves and AUC values are excellent considering both training and testing are over 90%.
+
+
+
+### Conclusion
+
+Based on the above AUC results, KNN has performed the least well compared to both Linear Regression and Decision Tree. If we consider the ROC models that had Failure.binary be predicted against the full (sampled) dataset, Decision Tree had the highest accuracy.
+
+

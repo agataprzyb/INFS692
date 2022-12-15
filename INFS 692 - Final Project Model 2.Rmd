@@ -1,0 +1,185 @@
+---
+title: "INFS 692 - Final Project Model 2"
+author: "Agata"
+date: "2022-12-14"
+output: pdf_document
+---
+
+###Libraries
+
+```{r}
+
+library(readr)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+library(gridExtra)
+library(COUNT)
+library(caret)
+library(rstatix)
+library(modeldata)
+library(rsample)    # for creating validation splits
+library(recipes)    # for feature engineering
+library(dslabs)     # for mnist data
+library(purrr)      #for mapping
+library(tidyverse)  # for filtering 
+library(ROCR)      # ROC Curves
+library(pROC)      # ROC Curves
+library(rpart)      # decision tree application
+library(rpart.plot)  # plotting decision trees
+library(vip)         # for feature importance
+library(pdp) 
+
+# Modeling packages
+library(keras)         # for fitting DNNs
+library(tfruns)        # for additional grid search & model training functions
+
+# Modeling helper package - not necessary for reproducibility
+library(tfestimators)  # provides grid search & model training interface
+
+```
+
+### Loading and Preprocessing data
+
+```{r}
+
+data1 <- read.csv("radiomics_completedata.csv", sep = ",")
+
+
+
+
+#######       PREPROCESSING DATA     ############
+
+#Check for null and missing values
+
+which(is.null(data1))
+
+which(is.na(data1))
+
+
+#Data split
+
+sub1 <- subset(data1, select= -c(Institution, Failure))
+
+
+
+
+
+#Check for normality
+
+hist(sub1$GLNU_align.H.PET)
+
+# or
+
+
+sub1shapiro <- shapiro.test(sub1$GLNU_align.H.PET)
+
+#based on the QQ plot, the data is not normalized.This is also enhanced by the shapiro test
+#where the p-value is < 0.05, which means that the data is not normalized. 
+
+
+#Normalize Data
+
+scale_data <-  as.data.frame(scale(sub1, center = TRUE, scale = TRUE))
+
+
+
+summary(scale_data$GLNU_align.H.PET)
+sd(scale_data$GLNU_align.H.PET)
+
+#Now the data has a mean of 0 and a standard deviation of 1, meaning the data is normalized. 
+
+
+
+#check correlation for full data set except categorical variables
+
+cor1 <- cor(select(scale_data, -c(Failure.binary)))
+#cor1
+
+
+
+
+scale_data$Failure.binary <- factor(data1$Failure.binary)
+
+
+#data1 <- select(scale_data, -c("Institution", "Failure"))
+
+data1 <- select(scale_data, 1:50)
+
+levels(data1$Failure.binary) <- c("Failure", "Success")
+
+
+df <- data1
+
+```
+
+### Split data for training 80%
+
+For this split, I thought of splitting the actual variables 80-20% and using Failure.binary as the output y.
+Beyond that, I don't know what to do since I can't execute the code as it stops at the to_categorical function.
+
+```{r}
+
+# Training split 80% and test 20%
+
+X_train <- df[2:40]
+X_test <- df[41:50]
+y_train <- df$Failure.binary
+y_test <- df$Failure.binary
+
+```
+
+### Reshape and model neurons
+
+```{r}
+
+#reshaping the dataset
+X_train <- X_train / 255
+
+X_test <- X_test / 255
+
+y_train <- to_categorical(y_train, num_classes = 10)
+y_test <- to_categorical(y_test, num_classes = 10)
+
+
+model <- keras_model_sequential() %>%
+  layer_dense(units = 256, activation = "sigmoid", input_shape = c(255)) %>%
+  layer_dropout(rate = 0.2) %>%
+  layer_dense(units = 128, activation = "sigmoid") %>%
+  layer_dropout(rate = 0.2) %>%
+  layer_dense(units = 128, activation = "sigmoid") %>%
+  layer_dropout(rate = 0.2) %>%
+  layer_dense(units = 64, activation = "sigmoid") %>% 
+  layer_dropout(rate = 0.2) %>%
+  layer_dense(units = 64, activation = "sigmoid") %>% 
+  layer_dropout(rate = 0.2) %>%
+  layer_dense(units = 10, activation = "softmax") %>%
+  # Backpropagation
+  compile(
+    loss = "categorical_crossentropy",
+    optimizer = optimizer_rmsprop(),
+    metrics = c("accuracy")
+  )
+
+
+#compiling the model
+model %>% compile(
+  loss = "categorical_crossentropy",
+  optimizer = optimizer_adam(),
+  metrics = c("accuracy")
+)
+
+history <- model %>% 
+  fit(X_train, y_train, epochs = 10, batch_size = 128, validation_split = 0.15)
+
+#model evaluation
+model %>%
+  evaluate(X_test, y_test)
+
+#model prediction
+model %>%
+  predict_classes(X_test)
+
+```
+

@@ -1,0 +1,1447 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={INFS 692 - Final Project Model 1},
+  pdfauthor={Agata},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{INFS 692 - Final Project Model 1}
+\author{Agata}
+\date{2022-12-14}
+
+\begin{document}
+\maketitle
+
+\hypertarget{helper-packages}{%
+\subsection{Helper Packages}\label{helper-packages}}
+
+These are all the packages necessary for running the Model 1 code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(plyr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:plyr':
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(ggpubr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'ggpubr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:plyr':
+## 
+##     mutate
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'gridExtra'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(COUNT)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: msme
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: MASS
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MASS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: sandwich
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(rstatix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'rstatix'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MASS':
+## 
+##     select
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:plyr':
+## 
+##     desc, mutate
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(modeldata)}
+\FunctionTok{library}\NormalTok{(rsample)    }\CommentTok{\# for creating validation splits}
+\FunctionTok{library}\NormalTok{(recipes)    }\CommentTok{\# for feature engineering}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'recipes'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     step
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(purrr)      }\CommentTok{\#for mapping}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'purrr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:caret':
+## 
+##     lift
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:plyr':
+## 
+##     compact
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)  }\CommentTok{\# for filtering }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+\end{verbatim}
+
+\begin{verbatim}
+## v tibble  3.1.8     v stringr 1.5.0
+## v tidyr   1.2.1     v forcats 0.5.2
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::arrange()     masks plyr::arrange()
+## x gridExtra::combine() masks dplyr::combine()
+## x purrr::compact()     masks plyr::compact()
+## x dplyr::count()       masks plyr::count()
+## x dplyr::failwith()    masks plyr::failwith()
+## x rstatix::filter()    masks dplyr::filter(), stats::filter()
+## x stringr::fixed()     masks recipes::fixed()
+## x dplyr::id()          masks plyr::id()
+## x dplyr::lag()         masks stats::lag()
+## x purrr::lift()        masks caret::lift()
+## x rstatix::mutate()    masks ggpubr::mutate(), dplyr::mutate(), plyr::mutate()
+## x dplyr::rename()      masks plyr::rename()
+## x rstatix::select()    masks MASS::select(), dplyr::select()
+## x dplyr::summarise()   masks plyr::summarise()
+## x dplyr::summarize()   masks plyr::summarize()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ROCR)      }\CommentTok{\# ROC Curves}
+\FunctionTok{library}\NormalTok{(pROC)      }\CommentTok{\# ROC Curves}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Type 'citation("pROC")' for a citation.
+## 
+## Attaching package: 'pROC'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     cov, smooth, var
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rpart)      }\CommentTok{\# decision tree application}
+\FunctionTok{library}\NormalTok{(rpart.plot)  }\CommentTok{\# plotting decision trees}
+\FunctionTok{library}\NormalTok{(vip)         }\CommentTok{\# for feature importance}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'vip'
+## 
+## The following object is masked from 'package:utils':
+## 
+##     vi
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pdp) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'pdp'
+## 
+## The following object is masked from 'package:purrr':
+## 
+##     partial
+\end{verbatim}
+
+\hypertarget{loading-data}{%
+\subsection{Loading Data}\label{loading-data}}
+
+Before pre=processing the data, we need to load it into a data1 variable
+for easier manipulation. The str() function helps identify which
+variables in the dataset are categorical, factors, etc.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"radiomics\_completedata.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{preprocessing-data}{%
+\subsection{Preprocessing Data}\label{preprocessing-data}}
+
+First, we must check the data for null and missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Check for null and missing values}
+
+\FunctionTok{which}\NormalTok{(}\FunctionTok{is.null}\NormalTok{(data1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(data1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
+
+In this case, we have neither missing nor null values. We can proceed to
+splitting the data.
+
+We want to split the data so that it doesn't include any categorical
+variables, or the Failure column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Data split}
+
+\NormalTok{sub1 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(data1, }\AttributeTok{select=} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Institution, Failure))}
+\end{Highlighting}
+\end{Shaded}
+
+Next, we must check if the data has a normal distribution. We can do
+this using two methods: using a histogram and determining visually if it
+has a bell curve (meaning data is normalized), or using the Shapiro test
+in which if the p-value is \textless{} than 0.5, that means that the
+data is not normally distributed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Check for normality}
+
+\FunctionTok{hist}\NormalTok{(sub1}\SpecialCharTok{$}\NormalTok{GLNU\_align.H.PET)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sub1shapiro }\OtherTok{\textless{}{-}} \FunctionTok{shapiro.test}\NormalTok{(sub1}\SpecialCharTok{$}\NormalTok{GLNU\_align.H.PET)}
+\NormalTok{sub1shapiro}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  sub1$GLNU_align.H.PET
+## W = 0.76271, p-value < 2.2e-16
+\end{verbatim}
+
+In this case, the histogram doesn't show us a bell curve, and the
+p-value from the Shapiro test is \textless{} 0.5, meaning data is not
+distributed normally.
+
+We must perform data normalization using the scale() function. Once
+done, to check if data is normalized, we can use the summary() function
+to see if the mean is = 0 and use the sd() function to see if the
+standard deviation is = 1.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Normalize Data}
+
+\NormalTok{scale\_data }\OtherTok{\textless{}{-}}  \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{scale}\NormalTok{(sub1, }\AttributeTok{center =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{scale =} \ConstantTok{TRUE}\NormalTok{))}
+
+\FunctionTok{summary}\NormalTok{(scale\_data}\SpecialCharTok{$}\NormalTok{GLNU\_align.H.PET)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -0.9982 -0.6721 -0.1783  0.0000  0.1947  5.3894
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(scale\_data}\SpecialCharTok{$}\NormalTok{GLNU\_align.H.PET)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+Now the data has a mean of 0 and a standard deviation of 1, meaning the
+data is normalized.
+
+We then check correlation of the full dataset without the categorical
+variables:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cor1 }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(}\FunctionTok{select}\NormalTok{(scale\_data, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Failure.binary)))}
+\CommentTok{\#cor1 this has been commented out or else there would be 700 pages in the pdf}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dataset-training-and-testing-split}{%
+\subsubsection{Dataset Training and Testing
+Split}\label{dataset-training-and-testing-split}}
+
+With preprocessing done, we can split the training and testing dataset.
+For this, we begin by factoring the Failure.binary column, and
+transforming the levels so that they represent Failure and Success. This
+is important for KNN and Decision Trees.
+
+For memory purposes and faster processing, we split the dataframe to
+take only a ``sample'' of the full dataset, or just the 50 first
+columns. The training is split at 80\%, using Failure.binary as the
+output.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scale\_data}\SpecialCharTok{$}\NormalTok{Failure.binary }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(data1}\SpecialCharTok{$}\NormalTok{Failure.binary)}
+
+
+\CommentTok{\#data1 \textless{}{-} select(scale\_data, {-}c("Institution", "Failure"))}
+
+\NormalTok{data1 }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(scale\_data, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{50}\NormalTok{)}
+
+\FunctionTok{levels}\NormalTok{(data1}\SpecialCharTok{$}\NormalTok{Failure.binary) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Failure"}\NormalTok{, }\StringTok{"Success"}\NormalTok{)}
+
+
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ data1}
+
+\FunctionTok{str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    197 obs. of  50 variables:
+##  $ Failure.binary             : Factor w/ 2 levels "Failure","Success": 1 2 1 2 1 2 1 1 2 2 ...
+##  $ Entropy_cooc.W.ADC         : num  0.5529 -0.0649 0.4599 1.1432 0.345 ...
+##  $ GLNU_align.H.PET           : num  -0.5706 -0.789 -0.0602 2.6747 -0.0674 ...
+##  $ Min_hist.PET               : num  -0.454 0.5 -1.15 -0.445 -0.989 ...
+##  $ Max_hist.PET               : num  -0.436 0.149 -1.177 -0.152 -1.106 ...
+##  $ Mean_hist.PET              : num  -0.42 0.315 -1.136 -0.349 -1.116 ...
+##  $ Variance_hist.PET          : num  -0.263 0.395 -0.896 -0.28 -0.934 ...
+##  $ Standard_Deviation_hist.PET: num  -0.236 0.297 -1.129 -0.253 -1.24 ...
+##  $ Skewness_hist.PET          : num  -0.323 -0.177 -0.959 -0.116 0.958 ...
+##  $ Kurtosis_hist.PET          : num  -0.273 -0.266 -0.472 0.12 0.907 ...
+##  $ Energy_hist.PET            : num  0.0502 0.0919 0.0474 -0.0124 0.1533 ...
+##  $ Entropy_hist.PET           : num  -0.38 -0.747 -0.37 -0.157 -0.853 ...
+##  $ AUC_hist.PET               : num  -0.568 -0.563 -0.581 -0.407 -0.408 ...
+##  $ H_suv.PET                  : num  -0.121 0.95 -1.072 -0.393 -1.211 ...
+##  $ Volume.PET                 : num  -0.7713 -0.8698 -0.4849 0.0587 -0.4229 ...
+##  $ X3D_surface.PET            : num  -0.52 -0.431 -0.155 0.244 -0.45 ...
+##  $ ratio_3ds_vol.PET          : num  -0.228 0.422 -0.248 -0.701 0.409 ...
+##  $ ratio_3ds_vol_norm.PET     : num  -0.37675 0.00118 -0.11356 -0.06927 -0.00444 ...
+##  $ irregularity.PET           : num  -0.404 -0.259 -0.501 -0.779 -0.396 ...
+##  $ tumor_length.PET           : num  -0.499 -0.625 -0.314 0.368 -0.691 ...
+##  $ Compactness_v1.PET         : num  -0.072 -0.0845 -0.0816 -0.0828 -0.0844 ...
+##  $ Compactness_v2.PET         : num  -0.425 -0.427 -0.426 -0.426 -0.427 ...
+##  $ Spherical_disproportion.PET: num  -0.37675 0.00118 -0.11356 -0.06927 -0.00444 ...
+##  $ Sphericity.PET             : num  -0.443 -0.505 -0.49 -0.496 -0.504 ...
+##  $ Asphericity.PET            : num  -0.3646 0.0201 -0.0967 -0.0517 0.0143 ...
+##  $ Center_of_mass.PET         : num  -0.0305 -0.3264 -0.5841 0.0433 -0.4082 ...
+##  $ Max_3D_diam.PET            : num  -0.6641 -0.7524 -0.5337 -0.0528 -0.7991 ...
+##  $ Major_axis_length.PET      : num  -0.7799 -0.7671 -0.4524 -0.0649 -0.7462 ...
+##  $ Minor_axis_length.PET      : num  -0.81 -0.749 -0.616 0.43 -0.899 ...
+##  $ Least_axis_length.PET      : num  -0.553 -0.74 -0.43 0.74 -0.728 ...
+##  $ Elongation.PET             : num  -0.377 -0.3 -0.683 -0.111 -0.601 ...
+##  $ Flatness.PET               : num  0.0389 -0.3472 -0.4444 0.3031 -0.3724 ...
+##  $ Max_cooc.L.PET             : num  0.0191 0.1307 0.0195 0.0526 0.1083 ...
+##  $ Average_cooc.L.PET         : num  -0.3868 -0.4758 0.0139 -0.8511 -1.0757 ...
+##  $ Variance_cooc.L.PET        : num  -0.1075 0.0906 -0.0764 -1.0807 -0.7069 ...
+##  $ Entropy_cooc.L.PET         : num  -0.498 -0.586 -0.456 -0.598 -0.688 ...
+##  $ DAVE_cooc.L.PET            : num  -0.3221 0.0172 -0.2548 -1.0184 -0.5794 ...
+##  $ DVAR_cooc.L.PET            : num  -0.438 0.284 -0.42 -1.081 -0.515 ...
+##  $ DENT_cooc.L.PET            : num  -0.489 -0.392 -0.485 -0.774 -0.58 ...
+##  $ SAVE_cooc.L.PET            : num  -0.3871 -0.4761 0.0138 -0.8516 -1.0763 ...
+##  $ SVAR_cooc.L.PET            : num  -0.0267 -0.0503 0.0164 -1.0376 -0.7682 ...
+##  $ SENT_cooc.L.PET            : num  -0.437 -0.452 -0.416 -0.592 -0.614 ...
+##  $ ASM_cooc.L.PET             : num  0.0857 0.0965 0.0819 0.0996 0.1113 ...
+##  $ Contrast_cooc.L.PET        : num  -0.221 0.302 -0.214 -1.004 -0.515 ...
+##  $ Dissimilarity_cooc.L.PET   : num  -0.3221 0.0172 -0.2548 -1.0184 -0.5794 ...
+##  $ Inv_diff_cooc.L.PET        : num  -0.5668 -0.6568 -0.673 0.0153 -0.3554 ...
+##  $ Inv_diff_norm_cooc.L.PET   : num  -0.576 -0.626 -0.591 -0.458 -0.533 ...
+##  $ IDM_cooc.L.PET             : num  -0.53 -0.577 -0.66 0.158 -0.277 ...
+##  $ IDM_norm_cooc.L.PET        : num  -0.567 -0.605 -0.57 -0.506 -0.544 ...
+##  $ Inv_var_cooc.L.PET         : num  -0.533 -0.581 -0.618 0.213 -0.239 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create training (80\%) and test (20\%) sets for the }
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)  }\CommentTok{\# for reproducibility}
+\NormalTok{churn\_split }\OtherTok{\textless{}{-}} \FunctionTok{initial\_split}\NormalTok{(df, }\AttributeTok{prop =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{strata =} \StringTok{"Failure.binary"}\NormalTok{)}
+\NormalTok{churn\_train }\OtherTok{\textless{}{-}} \FunctionTok{training}\NormalTok{(churn\_split)}
+\NormalTok{churn\_test  }\OtherTok{\textless{}{-}} \FunctionTok{testing}\NormalTok{(churn\_split)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{model-1-linear-regression}{%
+\subsubsection{Model 1: Linear
+Regression}\label{model-1-linear-regression}}
+
+The first model we will look at is Linear Regression.
+
+First, we train 3 different models.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Model training}
+ \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{ cv\_model1 }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(}
+\NormalTok{   Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ H\_suv.PET, }
+   \AttributeTok{data =}\NormalTok{ churn\_train, }
+   \AttributeTok{method =} \StringTok{"glm"}\NormalTok{,}
+   \AttributeTok{family =} \StringTok{"binomial"}\NormalTok{,}
+   \AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{)}
+\NormalTok{   )}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{cv\_model2 }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(}
+\NormalTok{   Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Entropy\_cooc.W.ADC }\SpecialCharTok{+}\NormalTok{ GLNU\_align.H.PET,}
+   \AttributeTok{data =}\NormalTok{ churn\_train,}
+   \AttributeTok{method =} \StringTok{"glm"}\NormalTok{,}
+   \AttributeTok{family =} \StringTok{"binomial"}\NormalTok{,}
+   \AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{)}
+
+\NormalTok{ )}
+
+ \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{ cv\_model3 }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(}
+\NormalTok{   Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,  }\CommentTok{\#overall datasets}
+   \AttributeTok{data =}\NormalTok{ churn\_train,}
+   \AttributeTok{method =} \StringTok{"glm"}\NormalTok{,}
+   \AttributeTok{family =} \StringTok{"binomial"}\NormalTok{,}
+   \AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{)}
+\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: algorithm did not converge
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: algorithm did not converge
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+\end{verbatim}
+
+Then we extract the sample performance measures:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# extract out of sample performance measures}
+\FunctionTok{summary}\NormalTok{(}
+  \FunctionTok{resamples}\NormalTok{(}
+    \FunctionTok{list}\NormalTok{(}
+      \AttributeTok{model1 =}\NormalTok{ cv\_model1,}
+      \AttributeTok{model2 =}\NormalTok{ cv\_model2,}
+      \AttributeTok{model3 =}\NormalTok{ cv\_model3}
+\NormalTok{    )}
+\NormalTok{  )}
+\NormalTok{)}\SpecialCharTok{$}\NormalTok{statistics}\SpecialCharTok{$}\NormalTok{Accuracy}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## model1 0.6451613 0.6562500 0.6562500 0.6625000 0.6774194 0.6774194    0
+## model2 0.7741935 0.8064516 0.8437500 0.8530242 0.9032258 0.9375000    0
+## model3 0.6250000 0.6875000 0.7096774 0.7141129 0.7741935 0.7741935    0
+\end{verbatim}
+
+As seen above, model 2 has the best results. As a whole, model 1 is the
+weakest (Final.binary on its own).
+
+Next, we create the prediction classes for each model and their
+confusion matrices.
+
+Because we changed the levels for Faliure.binary to ``Failure'' and
+``Success'' we need to change the reference parameters to that.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# predict class}
+\NormalTok{pred\_class\_1 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model1, churn\_train)}
+
+
+\CommentTok{\#balanced accuracy is most important}
+
+\CommentTok{\# create confusion matrix}
+\FunctionTok{confusionMatrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{relevel}\NormalTok{(pred\_class\_1, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{), }
+  \AttributeTok{reference =} \FunctionTok{relevel}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Success Failure
+##    Success       0       0
+##    Failure      53     104
+##                                           
+##                Accuracy : 0.6624          
+##                  95% CI : (0.5827, 0.7359)
+##     No Information Rate : 0.6624          
+##     P-Value [Acc > NIR] : 0.5372          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar's Test P-Value : 9.148e-13       
+##                                           
+##             Sensitivity : 0.0000          
+##             Specificity : 1.0000          
+##          Pos Pred Value :    NaN          
+##          Neg Pred Value : 0.6624          
+##              Prevalence : 0.3376          
+##          Detection Rate : 0.0000          
+##    Detection Prevalence : 0.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        'Positive' Class : Success         
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred\_class\_2 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model2, churn\_train)}
+
+\CommentTok{\# create confusion matrix}
+\FunctionTok{confusionMatrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{relevel}\NormalTok{(pred\_class\_2, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{), }
+  \AttributeTok{reference =} \FunctionTok{relevel}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Success Failure
+##    Success      41      10
+##    Failure      12      94
+##                                           
+##                Accuracy : 0.8599          
+##                  95% CI : (0.7956, 0.9101)
+##     No Information Rate : 0.6624          
+##     P-Value [Acc > NIR] : 1.688e-08       
+##                                           
+##                   Kappa : 0.6838          
+##                                           
+##  Mcnemar's Test P-Value : 0.8312          
+##                                           
+##             Sensitivity : 0.7736          
+##             Specificity : 0.9038          
+##          Pos Pred Value : 0.8039          
+##          Neg Pred Value : 0.8868          
+##              Prevalence : 0.3376          
+##          Detection Rate : 0.2611          
+##    Detection Prevalence : 0.3248          
+##       Balanced Accuracy : 0.8387          
+##                                           
+##        'Positive' Class : Success         
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred\_class\_3 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model3, churn\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create confusion matrix}
+\FunctionTok{confusionMatrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{relevel}\NormalTok{(pred\_class\_3, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{), }
+  \AttributeTok{reference =} \FunctionTok{relevel}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Success Failure
+##    Success      40       3
+##    Failure      13     101
+##                                           
+##                Accuracy : 0.8981          
+##                  95% CI : (0.8398, 0.9406)
+##     No Information Rate : 0.6624          
+##     P-Value [Acc > NIR] : 6.463e-12       
+##                                           
+##                   Kappa : 0.7611          
+##                                           
+##  Mcnemar's Test P-Value : 0.02445         
+##                                           
+##             Sensitivity : 0.7547          
+##             Specificity : 0.9712          
+##          Pos Pred Value : 0.9302          
+##          Neg Pred Value : 0.8860          
+##              Prevalence : 0.3376          
+##          Detection Rate : 0.2548          
+##    Detection Prevalence : 0.2739          
+##       Balanced Accuracy : 0.8629          
+##                                           
+##        'Positive' Class : Success         
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute predicted probabilities on training data}
+\NormalTok{m1\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model1, churn\_train, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\NormalTok{m2\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model2, churn\_train, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\NormalTok{m3\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model3, churn\_train, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute AUC metrics for cv\_model1,2 and 3 }
+\NormalTok{perf1 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m1\_prob, churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\NormalTok{perf2 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m2\_prob, churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\NormalTok{perf3 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m3\_prob, churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+
+\CommentTok{\# Plot ROC curves for cv\_model1,2 and 3 }
+\FunctionTok{plot}\NormalTok{(perf1, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(perf2,  }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(perf3, }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\FloatTok{0.7}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"cv\_model1"}\NormalTok{, }\StringTok{"cv\_model2"}\NormalTok{, }\StringTok{"cv\_model3"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }\AttributeTok{lty =} \DecValTok{3}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ROC plot for training data}
+\FunctionTok{roc}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m1\_prob, }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_train$Failure.binary ~ m1_prob, plot = TRUE,     legacy.axes = FALSE, percent = TRUE, col = "black", lwd = 2,     print.auc = TRUE)
+## 
+## Data: m1_prob in 104 controls (churn_train$Failure.binary Failure) < 53 cases (churn_train$Failure.binary Success).
+## Area under the curve: 58.33%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot.roc}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m2\_prob,  }\AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }
+         \AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{print.auc.y=}\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot.roc}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m3\_prob,  }\AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{, }
+         \AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{print.auc.y=}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{title}\NormalTok{(}\AttributeTok{main =} \StringTok{"Model Performance during Training"}\NormalTok{, }\AttributeTok{line =} \FloatTok{2.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-12-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Feature Interpretation}
+\FunctionTok{vip}\NormalTok{(cv\_model3, }\AttributeTok{num\_features =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-12-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute predicted probabilities on test data}
+\NormalTok{m1\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model1, churn\_test, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\NormalTok{m2\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model2, churn\_test, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\NormalTok{m3\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(cv\_model3, churn\_test, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
+## prediction from a rank-deficient fit may be misleading
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute AUC metrics for cv\_model1,2 and 3 }
+\NormalTok{perf1 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m1\_prob, churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\NormalTok{perf2 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m2\_prob, churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\NormalTok{perf3 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(m3\_prob, churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+
+\CommentTok{\# Plot ROC curves for cv\_model1,2 and 3 }
+\FunctionTok{plot}\NormalTok{(perf1, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(perf2,  }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{,  }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(perf3, }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\FloatTok{0.7}\NormalTok{, }\FloatTok{0.3}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"cv\_model1"}\NormalTok{, }\StringTok{"cv\_model2"}\NormalTok{, }\StringTok{"cv\_model3"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }\AttributeTok{lty =} \DecValTok{3}\SpecialCharTok{:}\DecValTok{1}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-12-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ROC plot for testing data}
+\FunctionTok{roc}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m1\_prob, }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_test$Failure.binary ~ m1_prob, plot = TRUE,     legacy.axes = FALSE, percent = TRUE, col = "black", lwd = 2,     print.auc = TRUE)
+## 
+## Data: m1_prob in 26 controls (churn_test$Failure.binary Failure) < 14 cases (churn_test$Failure.binary Success).
+## Area under the curve: 48.35%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot.roc}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m2\_prob,  }\AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"red"}\NormalTok{, }
+         \AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{print.auc.y=}\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot.roc}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ m3\_prob,  }\AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{, }
+         \AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{print.auc.y=}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{title}\NormalTok{(}\AttributeTok{main =} \StringTok{"Model Performance during Testing"}\NormalTok{, }\AttributeTok{line =} \FloatTok{2.5}\NormalTok{)}
+
+
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{"Model 1"}\NormalTok{, }\StringTok{"Model 2"}\NormalTok{, }\StringTok{"Model 3"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\NormalTok{, }
+    \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }\AttributeTok{bty=}\StringTok{"n"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-12-5.pdf}
+
+As seen in the ROC graph, Model 2 performs in an outstancing manner of
+distinguishing failures and successes, whereas model 3, in which
+Failure.binary as a whole performs on the entire dataset, still performs
+at an excellent level. Model 1, technically, shouldn't really be
+considered.
+
+\hypertarget{model-2-knn}{%
+\subsubsection{Model 2: KNN}\label{model-2-knn}}
+
+Here we are creating a second model using KNN. The grid search on my
+computer takes about 5-7 minutes with a sample size of 50 variables.
+Again, reference points for prediction is ``Success''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}Blueprint{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\#}
+
+\NormalTok{blueprint\_attr }\OtherTok{\textless{}{-}} \FunctionTok{recipe}\NormalTok{(Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ churn\_train) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_nzv}\NormalTok{(}\FunctionTok{all\_nominal}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_integer}\NormalTok{(}\FunctionTok{contains}\NormalTok{(}\StringTok{"Entropy"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_integer}\NormalTok{(}\FunctionTok{contains}\NormalTok{(}\StringTok{"GLNU"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_dummy}\NormalTok{(}\FunctionTok{all\_nominal}\NormalTok{(), }\SpecialCharTok{{-}}\FunctionTok{all\_outcomes}\NormalTok{(), }\AttributeTok{one\_hot =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_center}\NormalTok{(}\FunctionTok{all\_numeric}\NormalTok{(), }\SpecialCharTok{{-}}\FunctionTok{all\_outcomes}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{step\_scale}\NormalTok{(}\FunctionTok{all\_numeric}\NormalTok{(), }\SpecialCharTok{{-}}\FunctionTok{all\_outcomes}\NormalTok{())}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}Resampling Method{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\#}
+
+\NormalTok{cv }\OtherTok{\textless{}{-}} \FunctionTok{trainControl}\NormalTok{(}
+  \AttributeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }
+  \AttributeTok{number =} \DecValTok{10}\NormalTok{, }
+  \AttributeTok{repeats =} \DecValTok{5}\NormalTok{,}
+  \AttributeTok{classProbs =} \ConstantTok{TRUE}\NormalTok{,                 }
+  \AttributeTok{summaryFunction =}\NormalTok{ twoClassSummary)}
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}Hyperparameters and Gridsearch{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\#}
+
+\NormalTok{hyper\_grid }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}
+  \AttributeTok{k =} \FunctionTok{floor}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(churn\_train)}\SpecialCharTok{/}\DecValTok{3}\NormalTok{, }\AttributeTok{length.out =} \DecValTok{20}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Fit knn model and perform grid search}
+\NormalTok{knn\_grid }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(}
+\NormalTok{  blueprint\_attr, }
+  \AttributeTok{data =}\NormalTok{ churn\_train, }
+  \AttributeTok{method =} \StringTok{"knn"}\NormalTok{, }
+  \AttributeTok{trControl =}\NormalTok{ cv, }
+  \AttributeTok{tuneGrid =}\NormalTok{ hyper\_grid,}
+  \AttributeTok{metric =} \StringTok{"ROC"}
+\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(knn\_grid)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}Variable Importance{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\#}
+
+\NormalTok{varimpo }\OtherTok{\textless{}{-}} \FunctionTok{varImp}\NormalTok{(knn\_grid)}
+\NormalTok{varimpo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ROC curve variable importance
+## 
+##   only 20 most important variables shown (out of 49)
+## 
+##                             Importance
+## Entropy_cooc.W.ADC              100.00
+## GLNU_align.H.PET                 54.91
+## DVAR_cooc.L.PET                  43.14
+## Contrast_cooc.L.PET              32.67
+## Compactness_v2.PET               29.76
+## DAVE_cooc.L.PET                  28.52
+## Dissimilarity_cooc.L.PET         28.52
+## DENT_cooc.L.PET                  27.69
+## Variance_cooc.L.PET              26.43
+## Sphericity.PET                   26.35
+## Entropy_hist.PET                 22.03
+## Compactness_v1.PET               19.20
+## H_suv.PET                        19.02
+## SVAR_cooc.L.PET                  18.18
+## tumor_length.PET                 18.01
+## SAVE_cooc.L.PET                  17.93
+## Average_cooc.L.PET               17.84
+## Center_of_mass.PET               14.99
+## Spherical_disproportion.PET      12.98
+## ratio_3ds_vol_norm.PET           12.98
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred\_knngrid }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(knn\_grid, churn\_train)}
+
+\FunctionTok{confusionMatrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{relevel}\NormalTok{(pred\_knngrid, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{), }
+  \AttributeTok{reference =} \FunctionTok{relevel}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Success Failure
+##    Success      18       4
+##    Failure      35     100
+##                                          
+##                Accuracy : 0.7516         
+##                  95% CI : (0.6764, 0.817)
+##     No Information Rate : 0.6624         
+##     P-Value [Acc > NIR] : 0.01003        
+##                                          
+##                   Kappa : 0.3516         
+##                                          
+##  Mcnemar's Test P-Value : 1.556e-06      
+##                                          
+##             Sensitivity : 0.3396         
+##             Specificity : 0.9615         
+##          Pos Pred Value : 0.8182         
+##          Neg Pred Value : 0.7407         
+##              Prevalence : 0.3376         
+##          Detection Rate : 0.1146         
+##    Detection Prevalence : 0.1401         
+##       Balanced Accuracy : 0.6506         
+##                                          
+##        'Positive' Class : Success        
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(varimpo)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+
+
+\CommentTok{\# § Plot the training data performance while print the AUC values.}
+
+
+\NormalTok{knngrid\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(knn\_grid, churn\_train, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\FunctionTok{roc}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ knngrid\_prob, }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_train$Failure.binary ~ knngrid_prob,     plot = TRUE, legacy.axes = FALSE, percent = TRUE, col = "black",     lwd = 2, print.auc = TRUE)
+## 
+## Data: knngrid_prob in 104 controls (churn_train$Failure.binary Failure) < 53 cases (churn_train$Failure.binary Success).
+## Area under the curve: 79.23%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{title}\NormalTok{(}\AttributeTok{main =} \StringTok{"Model Performance during Training"}\NormalTok{, }\AttributeTok{line =} \FloatTok{2.5}\NormalTok{)}
+
+
+\CommentTok{\# § Use the PREDICT function to predict using the testing data.}
+
+\NormalTok{knntest }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(knn\_grid, churn\_test)}
+\FunctionTok{confusionMatrix}\NormalTok{(}
+  \AttributeTok{data =} \FunctionTok{relevel}\NormalTok{(knntest, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{), }
+  \AttributeTok{reference =} \FunctionTok{relevel}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary, }\AttributeTok{ref =} \StringTok{"Success"}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction Success Failure
+##    Success       0       0
+##    Failure      14      26
+##                                           
+##                Accuracy : 0.65            
+##                  95% CI : (0.4832, 0.7937)
+##     No Information Rate : 0.65            
+##     P-Value [Acc > NIR] : 0.572082        
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar's Test P-Value : 0.000512        
+##                                           
+##             Sensitivity : 0.00            
+##             Specificity : 1.00            
+##          Pos Pred Value :  NaN            
+##          Neg Pred Value : 0.65            
+##              Prevalence : 0.35            
+##          Detection Rate : 0.00            
+##    Detection Prevalence : 0.00            
+##       Balanced Accuracy : 0.50            
+##                                           
+##        'Positive' Class : Success         
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# § Plot the testing data performance while print the AUC values.}
+
+\NormalTok{knngrid\_probtest }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(knn\_grid, churn\_test, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{Success}
+\FunctionTok{roc}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ knngrid\_probtest, }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_test$Failure.binary ~ knngrid_probtest,     plot = TRUE, legacy.axes = FALSE, percent = TRUE, col = "black",     lwd = 2, print.auc = TRUE)
+## 
+## Data: knngrid_probtest in 26 controls (churn_test$Failure.binary Failure) < 14 cases (churn_test$Failure.binary Success).
+## Area under the curve: 71.02%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{title}\NormalTok{(}\AttributeTok{main =} \StringTok{"Model Performance during Testing"}\NormalTok{, }\AttributeTok{line =} \FloatTok{2.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-13-3.pdf}
+The training data performance is just a little better than testing, but
+the AUC values for both aren't as good as the ones from LR.
+
+\hypertarget{model-3-decision-tree}{%
+\subsubsection{Model 3: Decision Tree}\label{model-3-decision-tree}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#modeling}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(Failure.binary}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ churn\_train, }\AttributeTok{method =} \StringTok{\textquotesingle{}class\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\#plotting}
+\FunctionTok{rpart.plot}\NormalTok{(fit, }\AttributeTok{extra =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#plotting}
+\FunctionTok{plotcp}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#feature importance}
+\FunctionTok{vip}\NormalTok{(fit, }\AttributeTok{num\_features =} \DecValTok{20}\NormalTok{, }\AttributeTok{bar =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute predicted probabilities on training data}
+\NormalTok{dt1\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(fit, churn\_train, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}
+
+\CommentTok{\# ROC plot for training data}
+\FunctionTok{roc}\NormalTok{(churn\_train}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dt1\_prob[,}\DecValTok{2}\NormalTok{], }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-4.pdf}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_train$Failure.binary ~ dt1_prob[,     2], plot = TRUE, legacy.axes = FALSE, percent = TRUE, col = "black",     lwd = 2, print.auc = TRUE)
+## 
+## Data: dt1_prob[, 2] in 104 controls (churn_train$Failure.binary Failure) < 53 cases (churn_train$Failure.binary Success).
+## Area under the curve: 90.97%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_fit }\OtherTok{\textless{}{-}} \FunctionTok{rpart}\NormalTok{(Failure.binary}\SpecialCharTok{\textasciitilde{}}\NormalTok{., }\AttributeTok{data =}\NormalTok{ churn\_test, }\AttributeTok{method =} \StringTok{\textquotesingle{}class\textquotesingle{}}\NormalTok{)}
+\NormalTok{failure\_predict }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(test\_fit,churn\_test)}
+
+
+\CommentTok{\#    Use the RPART.PLOT and PLOTCP function to identify the trees}
+\FunctionTok{rpart.plot}\NormalTok{(test\_fit, }\AttributeTok{extra =}  \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plotcp}\NormalTok{(test\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#    Plot the testing data performance while print the AUC values}
+
+
+\NormalTok{dt2\_prob }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(test\_fit, churn\_test, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}
+
+\NormalTok{perf1 }\OtherTok{\textless{}{-}} \FunctionTok{prediction}\NormalTok{(dt2\_prob[,}\DecValTok{2}\NormalTok{], churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{performance}\NormalTok{(}\AttributeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\AttributeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(perf1, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{roc}\NormalTok{(churn\_test}\SpecialCharTok{$}\NormalTok{Failure.binary }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dt2\_prob[,}\DecValTok{2}\NormalTok{], }\AttributeTok{plot=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{legacy.axes=}\ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{percent=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{col=}\StringTok{"black"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{, }\AttributeTok{print.auc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = Failure, case = Success
+## Setting direction: controls < cases
+\end{verbatim}
+
+\includegraphics{INFS-692---Final-Project-Model-1_files/figure-latex/unnamed-chunk-14-8.pdf}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = churn_test$Failure.binary ~ dt2_prob[,     2], plot = TRUE, legacy.axes = FALSE, percent = TRUE, col = "black",     lwd = 2, print.auc = TRUE)
+## 
+## Data: dt2_prob[, 2] in 26 controls (churn_test$Failure.binary Failure) < 14 cases (churn_test$Failure.binary Success).
+## Area under the curve: 90.93%
+\end{verbatim}
+
+The Decision Tree ROC curves and AUC values are excellent considering
+both training and testing are over 90\%.
+
+\hypertarget{conclusion}{%
+\subsubsection{Conclusion}\label{conclusion}}
+
+Based on the above AUC results, KNN has performed the least well
+compared to both Linear Regression and Decision Tree. If we consider the
+ROC models that had Failure.binary be predicted against the full
+(sampled) dataset, Decision Tree had the highest accuracy.
+
+\end{document}
